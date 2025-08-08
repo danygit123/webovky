@@ -1,0 +1,389 @@
+:root {
+  --bg: #faf7f2;
+  --fg: #1a1a1a;
+  --muted: #7c6f57;
+  --brand: #bfa14a;        /* tmavě zlatá */
+  --brand-dark: #9b8039;   /* tmavší zlatá */
+  --card: #ffffff;
+  --border: #e5e5e5;
+  --shadow: 0 8px 30px rgba(0,0,0,.06);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+}
+
+/* ===== Container spacing ===== */
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ===== Topbar ===== */
+.topbar {
+  background: #f5f2eb;      /* jemně béžová */
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.topbar-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 24px 0;          /* vyšší lišta */
+}
+
+.logo img { height: 40px; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.nav-links a {
+  color: #000;              /* černý text */
+  text-decoration: none;
+}
+.nav-links a:hover { color: var(--brand); }
+
+.nav-links img { height: 22px; width: auto; }
+
+/* ===== Buttons ===== */
+.btn-primary, .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn-primary { background: var(--brand); color: #fff; box-shadow: var(--shadow); }
+.btn-primary:hover { background: var(--brand-dark); }
+
+.btn-ghost { background: #fff; border: 1px solid var(--border); color: var(--fg); }
+.btn-ghost:hover { background: var(--brand); color: #fff; }
+
+/* ===== Hero two columns ===== */
+.hero-two-cols { padding: 60px 0; background: #fff; }
+
+.hero-inner-cols {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: clamp(34px, 5vw, 54px);
+  color: var(--brand-dark);
+  margin-bottom: 12px;
+}
+.hero-text p { font-size: 18px; color: var(--fg); margin-bottom: 20px; }
+.hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* fotka vedle nadpisu – menší a vyvážená */
+.hero-image img {
+  width: 320px; /* nebo třeba 100% podle potřeby */
+  height: auto; /* automaticky dopočítaná výška */
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+
+/* ===== Generic sections ===== */
+section { padding: 64px 0; }
+h2 { font-size: clamp(24px, 3vw, 34px); margin-bottom: 14px; color: var(--brand-dark); }
+.sub {
+  color: #000; /* černý text */
+  margin-top: -6px;
+  margin-bottom: 24px;
+}
+
+
+/* ===== Benefits – větší, kontrastnější karty ===== */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 24px;
+}
+.benefit {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;                 /* větší vnitřní odsazení */
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 16px;
+  min-height: 150px;             /* více prostoru */
+}
+.benefit .ic { font-size: 36px; line-height: 1; }
+.benefit h3 { margin: 0 0 8px; font-size: 22px; color: var(--brand-dark); }
+.benefit p { margin: 0; color: #4b4b4b; font-size: 16px; }
+
+/* ===== Product visual with certificate – víc kontrastu + širší fotka ===== */
+.product-visual {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background: #fdfaf4;           /* světlejší panel pro kontrast */
+  padding: 40px;
+  border-radius: 14px;
+  border: 1px solid #eee2c8;
+  box-shadow: 0 8px 30px rgba(191,161,74,.08);
+}
+
+.product-visual h2 { color: #8a6b1f; }
+.product-visual p { color: #161616; }
+
+.image-with-cert {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.image-with-cert img.main {
+  width: 100%;              /* širší fotka */
+  height: auto;
+  display: block;
+}
+.image-with-cert img.cert {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 110px;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.25));
+}
+
+/* Trust badges */
+.trust { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.trust .badge {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 8px 14px;          /* víc místa */
+  font-size: 15px;            /* větší písmo */
+  font-weight: 600;           /* tučnější */
+  color: var(--brand-dark);
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 6px;                   /* mezera mezi ikonou a textem */
+}
+.trust .badge img {
+  height: 16px;
+  width: auto;
+}
+
+
+/* ===== Table ===== */
+.card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 22px; box-shadow: var(--shadow); }
+
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 12px 14px; border-bottom: 1px solid var(--border); text-align: left; }
+thead th { background: #f9f6ef; font-weight: 700; }
+tbody tr:last-child td { border-bottom: none; }
+
+/* ===== Pricing ===== */
+.pricing {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+.price-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+.price-card.highlighted { outline: 2px solid var(--brand); }
+.price { font-size: 32px; font-weight: 800; color: var(--brand-dark); margin: 8px 0 14px; }
+.pill {
+  display: inline-block;    /* aby se velikost bubliny přizpůsobila textu */
+  background: #fdf6e3;
+  color: var(--brand-dark);
+  border: 1px solid #f0e2b6;
+  padding: 4px 10px;         /* menší horizontální odsazení */
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;       /* zabrání zalomení na více řádků */
+}
+
+
+/* ===== Footer ===== */
+footer {
+  padding: 36px 0;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 14px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1100px) {
+  .benefits { grid-template-columns: repeat(2, minmax(240px, 1fr)); }
+}
+@media (max-width: 960px) {
+  .hero-inner-cols { grid-template-columns: 1fr; text-align: center; }
+  .hero-image img { max-height: 300px; margin: 0 auto; }
+  .product-visual { grid-template-columns: 1fr; }
+  .pricing { grid-template-columns: 1fr; }
+  .benefits { grid-template-columns: 1fr; }
+}
+/* Odsazení pro hierarchii nutričních údajů */
+.indent-1 td:first-child {
+  padding-left: 32px;
+}
+
+.indent-2 td:first-child {
+  padding-left: 64px;
+}
+
+.expert-note {
+  background: #fff;
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.expert-inner {
+  display: grid;
+  grid-template-columns: 0.6fr 1fr; /* užší obrázek, více místa pro text */
+  gap: 16px; /* menší mezera mezi fotkou a textem */
+  align-items: center;
+}
+
+.expert-photo img {
+  max-width: 260px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.expert-text h2 {
+  color: var(--brand-dark);
+  margin-bottom: 12px;
+}
+
+.expert-text p {
+  color: var(--fg);
+  margin-bottom: 14px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+/* ===== Pricing – čisté dvousloupcové karty ===== */
+.pricing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+/* karta = dva sloupce: fotka vlevo (fix), detaily vpravo (flex) */
+.price-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;  /* šířka sloupce s fotkou */
+  gap: 24px;
+  align-items: center;               /* svislé zarovnání obsahu */
+  padding: 28px;
+  min-height: 360px;                 /* konzistentní výška */
+}
+
+/* Nadpis OBJEDNÁVKA uprostřed a větší */
+#objednavka h2 {
+  text-align: center;
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: .2px;
+  margin-bottom: 10px;
+}
+
+/* Karty pricing: zarovnání obsahu vpravo do sloupce */
+.price-card {
+  display: grid;
+  grid-template-columns: 220px 1fr; /* fotka vlevo, text vpravo */
+  gap: 24px;
+  align-items: center;
+  padding: 28px;
+}
+
+/* Fotka vlevo */
+.price-card .price-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  display: block;
+}
+
+/* Vpravo – přeuspořádání pořadí prvků bez změny HTML */
+.price-card > div:not(.price-image):not(.cta-row) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.price-card h3 { order: 1; font-size: 28px; margin: 4px 0; }
+.price-card .pill { order: 2; font-size: 16px; padding: 6px 12px; }
+.price-card .price { order: 3; font-size: 44px; margin: 8px 0 4px; }
+.price-card .sub { order: 4; }
+
+/* Tlačítko vycentrované a tučné */
+.price-card .cta-row {
+  grid-column: 1 / -1;           /* tlačítko přes celou šířku karty */
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+.price-card .btn-primary {
+  font-weight: 800;
+  padding: 14px 24px;
+}
+
+/* Zvýrazněná karta – může mít o chlup širší sloupec s fotkou */
+.price-card.highlighted { grid-template-columns: 240px 1fr; }
+
+/* Responsivita: na mobilu pod sebe a držet centrování */
+@media (max-width: 900px) {
+  .pricing { grid-template-columns: 1fr; }
+  .price-card { grid-template-columns: 1fr; }
+  .price-card .price-image { max-width: 260px; justify-self: center; }
+  .price-card .cta-row { grid-column: auto; }
+}
+
+
+/* Responsivita: na úzké šířce se to složí pod sebe */
+@media (max-width: 900px) {
+  .pricing { grid-template-columns: 1fr; }
+  .price-card { grid-template-columns: 1fr; gap: 16px; min-height: auto; }
+  .price-card .price-image { justify-self: center; }
+  .price-card .price-image img { max-width: 240px; }
+}
+
+
+/* ===== Print (PDF export) ===== */
+@media print {
+  .topbar { position: static; }
+  .btn-primary, .btn-ghost { filter: grayscale(100%); }
+  a[href]::after { content: " (" attr(href) ")"; font-size: 10px; color: #888; }
+  section { break-inside: avoid; }
+}
